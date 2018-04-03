@@ -6,9 +6,15 @@
     tools:context="xyz.wildapp.android.wildtrack.TrackingFragment"
     tools:showIn="@layout/activity_main">
 
-    <Button
-        android:id="@+id/fragment_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize">
+
+        <Button
+            android:id="@+id/fragment_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
