@@ -1,5 +1,6 @@
 package xyz.wildapp.android.wildtrack;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -9,9 +10,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -80,20 +83,20 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        RelativeLayout mainLayout = findViewById(R.id.layout_switch);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_track) {
+            mainLayout.removeAllViews();
+            View layout = inflater.inflate(R.layout.content_main, mainLayout, true);
+//            mainLayout.addView(layout);
+        } else if (id == R.id.nav_track_list) {
+            mainLayout.removeAllViews();
+            View layout = inflater.inflate(R.layout.content_tracklist, mainLayout, true);
+//            mainLayout.addView(layout);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
