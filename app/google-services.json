@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "1042732642024",
+    "firebase_url": "https://vkapiexamples.firebaseio.com",
+    "project_id": "vkapiexamples",
+    "storage_bucket": "vkapiexamples.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042732642024:android:025cd067d525027d",
+        "android_client_info": {
+          "package_name": "xyz.wildapp.android.wildmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042732642024-ambk3addg8tnprbe07snhu68t7n7mc9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.wildapp.android.wildmessenger",
+            "certificate_hash": "44e9a0b2cf300e33bb0b1673d23646c430010709"
+          }
+        },
+        {
+          "client_id": "1042732642024-04955q1qbouan3l6867sh80kbssv1gst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATyld8x-OTEU-gQalKxCY3PrNXeY8ml1U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042732642024-04955q1qbouan3l6867sh80kbssv1gst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042732642024:android:98e01c9ef7d1599b",
+        "android_client_info": {
+          "package_name": "xyz.wildapp.android.wildtrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042732642024-ft84d522oagd08prp3ss598mnurkbn5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.wildapp.android.wildtrack",
+            "certificate_hash": "554ca807de7286c549917bff4350f97b3fe377e0"
+          }
+        },
+        {
+          "client_id": "1042732642024-04955q1qbouan3l6867sh80kbssv1gst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATyld8x-OTEU-gQalKxCY3PrNXeY8ml1U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042732642024-04955q1qbouan3l6867sh80kbssv1gst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042732642024:android:551d7658932f2182",
+        "android_client_info": {
+          "package_name": "xyz.wildapp.vkexamples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042732642024-04955q1qbouan3l6867sh80kbssv1gst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATyld8x-OTEU-gQalKxCY3PrNXeY8ml1U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
