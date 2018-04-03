@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -95,7 +97,10 @@ public class MainActivity extends AppCompatActivity
 //            mainLayout.addView(layout);
         } else if (id == R.id.nav_track_list) {
             mainLayout.removeAllViews();
-            View layout = inflater.inflate(R.layout.content_tracklist, mainLayout, true);
+            Fragment fragment = new TrackingFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.layout_switch, fragment).commit();
+//            View layout = inflater.inflate(R.layout.content_tracking, mainLayout, true);
 //            mainLayout.addView(layout);
         }
 
