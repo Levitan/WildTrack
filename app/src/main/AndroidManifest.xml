@@ -30,7 +30,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".FcmMessagingService"
+            android:name=".firebase.FcmMessagingService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

@@ -1,4 +1,4 @@
-package xyz.wildapp.android.wildtrack;
+package xyz.wildapp.android.wildtrack.firebase;
 
 import android.util.Log;
 
