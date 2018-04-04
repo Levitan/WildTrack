@@ -16,6 +16,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/splash"
+            android:paddingBottom="@dimen/activity_vertical_margin" />
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,13 +30,14 @@
                 android:id="@+id/single_track_field"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Track number" />
+                android:hint="@string/main_track_number_field" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/single_track_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Track package" />
+            android:text="@string/main_track_btn"
+            android:theme="@style/ButtonPrimary" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

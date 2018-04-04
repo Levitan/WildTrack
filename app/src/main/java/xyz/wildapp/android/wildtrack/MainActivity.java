@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
-
+    private FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +29,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab = findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -93,15 +86,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_track) {
             mainLayout.removeAllViews();
-            View layout = inflater.inflate(R.layout.content_main, mainLayout, true);
-//            mainLayout.addView(layout);
+            inflater.inflate(R.layout.content_main, mainLayout, true);
+            fab.setVisibility(View.INVISIBLE);
         } else if (id == R.id.nav_track_list) {
             mainLayout.removeAllViews();
             Fragment fragment = new TrackingFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.layout_switch, fragment).commit();
-//            View layout = inflater.inflate(R.layout.content_tracking, mainLayout, true);
-//            mainLayout.addView(layout);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

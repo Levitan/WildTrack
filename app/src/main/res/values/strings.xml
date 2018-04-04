@@ -8,4 +8,7 @@
     <string name="draw_track_package">Track package</string>
     <string name="draw_track_list">Track list</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="main_track_number_field">Track number</string>
+    <string name="main_track_btn">Track package</string>
+    <string name="draw_title_tracking">Tracking</string>
 </resources>
