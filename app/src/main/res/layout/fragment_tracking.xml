@@ -3,20 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="xyz.wildapp.android.wildtrack.TrackingFragment"
+    android:paddingTop="?attr/actionBarSize"
+    tools:context="xyz.wildapp.android.wildtrack.view.TrackingListFragment"
     tools:showIn="@layout/activity_main">
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/track_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize">
-
-        <Button
-            android:id="@+id/fragment_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello"
-            android:theme="@style/ButtonPrimary" />
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>
