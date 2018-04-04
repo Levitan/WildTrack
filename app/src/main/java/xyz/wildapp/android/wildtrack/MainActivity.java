@@ -17,11 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import xyz.wildapp.android.wildtrack.view.TrackingListFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
     private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             fab.setVisibility(View.INVISIBLE);
         } else if (id == R.id.nav_track_list) {
             mainLayout.removeAllViews();
-            Fragment fragment = new TrackingFragment();
+            Fragment fragment = new TrackingListFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.layout_switch, fragment).commit();
         }
@@ -98,5 +101,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 }
