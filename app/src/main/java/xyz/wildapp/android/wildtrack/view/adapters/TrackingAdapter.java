@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import xyz.wildapp.android.wildtrack.R;
+import xyz.wildapp.android.wildtrack.api.ApiConstants;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
 
 /**
@@ -51,8 +53,21 @@ public class TrackingAdapter extends BaseAdapter {
         Tracking tracking = (Tracking) getItem(index);
         ((TextView) view.findViewById(R.id.tracklist_item_title)).setText(tracking.getTitle());
         ((TextView) view.findViewById(R.id.tracklist_item_number)).setText(tracking.getTrackingNumber());
-        ((TextView) view.findViewById(R.id.tracklist_item_status)).setText(tracking.getTag());
-
+        ImageView status = view.findViewById(R.id.tracklist_item_status);
+        switch (tracking.getTag()) {
+            case ApiConstants.STATUS_DELIVERED:
+                status.setImageDrawable(context.getDrawable(R.drawable.status_delivered));
+                break;
+            case ApiConstants.STATUS_IN_TRANSIT:
+                status.setImageDrawable(context.getDrawable(R.drawable.status_intransit));
+                break;
+            case ApiConstants.STATUS_PENDING:
+                status.setImageDrawable(context.getDrawable(R.drawable.status_pending));
+                break;
+            default:
+                status.setImageDrawable(context.getDrawable(R.drawable.status_not_info));
+                break;
+        }
         return view;
     }
 }
