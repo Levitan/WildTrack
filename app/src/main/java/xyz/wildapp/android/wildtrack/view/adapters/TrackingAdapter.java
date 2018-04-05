@@ -68,6 +68,24 @@ public class TrackingAdapter extends BaseAdapter {
                 status.setImageDrawable(context.getDrawable(R.drawable.status_not_info));
                 break;
         }
+
+        ImageView courierLogo = view.findViewById(R.id.tracklist_item_courier);
+        switch (tracking.getSlug()) {
+            case ApiConstants.COURIER_CHINA:
+                courierLogo.setImageResource(R.mipmap.chinapost);
+                break;
+            case ApiConstants.COURIER_EPACKET:
+                courierLogo.setImageResource(R.mipmap.epacket);
+                break;
+            case ApiConstants.COURIER_RUSSIAN_POST:
+                courierLogo.setImageResource(R.mipmap.russian_post);
+                break;
+            case ApiConstants.COURIER_SINGPOST:
+                courierLogo.setImageResource(R.mipmap.singpost);
+                break;
+            default:
+                break;
+        }
         return view;
     }
 }
