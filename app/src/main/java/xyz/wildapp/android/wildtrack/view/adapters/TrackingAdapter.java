@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -86,6 +88,18 @@ public class TrackingAdapter extends BaseAdapter {
             default:
                 break;
         }
+
+        CheckBox checkBox = view.findViewById(R.id.tracklist_item_check);
+        checkBox.setTag(index);
+        checkBox.setOnCheckedChangeListener(checkListener);
+        checkBox.setChecked(tracking.isChecked());
         return view;
     }
+
+    private CompoundButton.OnCheckedChangeListener checkListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            ((Tracking)getItem((Integer) buttonView.getTag())).setChecked(isChecked);
+        }
+    };
 }

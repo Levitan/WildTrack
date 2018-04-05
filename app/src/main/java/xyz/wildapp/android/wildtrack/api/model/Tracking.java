@@ -133,6 +133,8 @@ public class Tracking {
     @SerializedName("tracking_state")
     @Expose
     private Object trackingState;
+    @Expose(serialize = false, deserialize = false)
+    private Boolean checked = false;
 
     /**
      * No args constructor for use in serialization
@@ -785,4 +787,11 @@ public class Tracking {
         return this;
     }
 
+    public Boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 }
