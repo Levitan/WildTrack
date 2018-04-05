@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import xyz.wildapp.android.wildtrack.view.fragments.TrackPackageFragment;
 import xyz.wildapp.android.wildtrack.view.fragments.TrackingListFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -25,12 +26,23 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private FloatingActionButton fab;
 
+    RelativeLayout mainLayout;
+
+    LayoutInflater inflater;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mainLayout = findViewById(R.id.layout_switch);
+        mainLayout.removeAllViews();
+
+        Fragment fragment = new TrackPackageFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_switch, fragment).commit();
 
         fab = findViewById(R.id.fab);
         fab.setVisibility(View.INVISIBLE);
@@ -81,16 +93,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-
-        RelativeLayout mainLayout = findViewById(R.id.layout_switch);
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         int id = item.getItemId();
 
         if (id == R.id.nav_track) {
             mainLayout.removeAllViews();
-            inflater.inflate(R.layout.content_main, mainLayout, true);
-            fab.setVisibility(View.INVISIBLE);
+            Fragment fragment = new TrackPackageFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.layout_switch, fragment).commit();
         } else if (id == R.id.nav_track_list) {
             mainLayout.removeAllViews();
             Fragment fragment = new TrackingListFragment();

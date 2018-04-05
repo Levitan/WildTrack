@@ -2,10 +2,13 @@ package xyz.wildapp.android.wildtrack.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -36,6 +39,12 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     private LinearLayout waiting;
 
     public TrackingListFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -94,5 +103,11 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
             }
         });
         trackList.setAdapter(adapter);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.tracklist_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
