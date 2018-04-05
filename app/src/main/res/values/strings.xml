@@ -17,4 +17,5 @@
     <string name="btn_cancel">Cancel</string>
     <string name="error_empty_fields">All fields must not be empty</string>
     <string name="loading_data">Loading data</string>
+    <string name="add_title_courier">Courier</string>
 </resources>
