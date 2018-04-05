@@ -48,6 +48,7 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.draw_track_list));
         waiting = view.findViewById(R.id.track_list_waiting);
         trackList = view.findViewById(R.id.track_list);
+        trackList.setDivider(null);
         return view;
     }
 
