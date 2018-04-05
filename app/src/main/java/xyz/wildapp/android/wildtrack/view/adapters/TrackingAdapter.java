@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import xyz.wildapp.android.wildtrack.R;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
@@ -20,9 +20,9 @@ public class TrackingAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater inflater;
-    private ArrayList<Tracking> trackList;
+    private List<Tracking> trackList;
 
-    public TrackingAdapter(Context context, ArrayList<Tracking> trackList) {
+    public TrackingAdapter(Context context, List<Tracking> trackList) {
         this.context = context;
         this.trackList = trackList;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

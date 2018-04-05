@@ -38,6 +38,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".view.activities.AddTrackActivity" />
     </application>
 
 </manifest>

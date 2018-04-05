@@ -56,7 +56,9 @@ public class Courier {
      * @param supportLanguages
      * @param optionalFields
      */
-    public Courier(String slug, String name, String phone, String otherName, String webUrl, List<Object> requiredFields, List<Object> optionalFields, String defaultLanguage, List<String> supportLanguages, List<String> serviceFromCountryIso3) {
+    public Courier(String slug, String name, String phone, String otherName, String webUrl,
+                   List<Object> requiredFields, List<Object> optionalFields, String defaultLanguage,
+                   List<String> supportLanguages, List<String> serviceFromCountryIso3) {
         super();
         this.slug = slug;
         this.name = name;
