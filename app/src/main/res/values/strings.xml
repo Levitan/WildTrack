@@ -11,4 +11,10 @@
     <string name="main_track_number_field">Track number</string>
     <string name="main_track_btn">Track package</string>
     <string name="draw_title_tracking">Tracking</string>
+    <string name="title_add_new_track">Add new track</string>
+    <string name="add_track_title">Track title</string>
+    <string name="add_track_number_btn">Add track number</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="error_empty_fields">All fields must not be empty</string>
+    <string name="loading_data">Loading data</string>
 </resources>

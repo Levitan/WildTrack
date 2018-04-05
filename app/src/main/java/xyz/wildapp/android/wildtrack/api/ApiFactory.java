@@ -2,8 +2,10 @@ package xyz.wildapp.android.wildtrack.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -43,11 +45,13 @@ public class ApiFactory {
 
     @SuppressWarnings("unchecked")
     private static Gson setUpGson() {
-        Class<List<Courier>> couriersClazz = (Class) List.class;
-        Class<List<Tracking>> trackingsClazz = (Class) List.class;
+        Type courierList = new TypeToken<List<Courier>>() {
+        }.getType();
+        Type trackList = new TypeToken<List<Tracking>>() {
+        }.getType();
         return new GsonBuilder()
-                .registerTypeAdapter(couriersClazz, new Deserializer<List<Courier>>("couriers"))
-                .registerTypeAdapter(trackingsClazz, new Deserializer<List<Tracking>>("trackings"))
+                .registerTypeAdapter(courierList, new Deserializer<List<Courier>>("couriers"))
+                .registerTypeAdapter(trackList, new Deserializer<List<Tracking>>("trackings"))
                 .registerTypeAdapter(Tracking.class, new Deserializer<Tracking>("tracking"))
                 .registerTypeAdapter(Tracking.class, new Serializer<Tracking>())
                 .create();
