@@ -11,6 +11,8 @@
 
     <style name="TrackStatusTheme" parent="@style/Theme.AppCompat.Light">
         <item name="actionBarStyle">@style/TrackStatusTheme.ActionBar</item>
+        <item name="colorPrimaryDark">@color/light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="TrackStatusTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">

@@ -11,4 +11,5 @@
     <color name="google_blue">#4885ed</color>
 
     <color name="light_background">#f8f8fa</color>
+    <color name="light_background_dark">#ececee</color>
 </resources>
