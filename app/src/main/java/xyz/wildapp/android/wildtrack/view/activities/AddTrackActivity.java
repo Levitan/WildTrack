@@ -61,6 +61,15 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onResponse(Call<Tracking> call, Response<Tracking> response) {
                         Log.i(TAG, "Create tracking status code: " + response.code());
+                        Log.d(TAG, "onResponse: " + response.body());
+                        synchronized (this) {
+                            try {
+                                this.wait(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        finish();
                     }
 
                     @Override
@@ -68,7 +77,6 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
                         Log.e(TAG, "Unable to create tracking", t);
                     }
                 });
-                finish();
             } else {
                 Snackbar.make(view, getString(R.string.error_track_add_empty_fields), Snackbar.LENGTH_LONG).show();
             }

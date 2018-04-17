@@ -3,9 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_action_delete"
+        android:id="@+id/menu_tracklist_copy"
+        android:title="Copy tracknumber"
+        android:visible="true"/>
+    <item
+        android:id="@+id/menu_tracklist_edit"
+        android:title="Edit"
+        android:visible="true"/>
+    <item
+        android:id="@+id/menu_tracklist_delete"
         android:icon="@drawable/tracklist_delete"
-        android:title="@string/menu_action_delete"
-        android:visible="true"
-        app:showAsAction="always" />
+        android:title="Delete"
+        android:visible="true" />
 </menu>
