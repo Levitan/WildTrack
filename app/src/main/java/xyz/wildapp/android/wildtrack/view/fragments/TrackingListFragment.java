@@ -49,6 +49,12 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tracking, container, false);
@@ -126,22 +132,5 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
             }
         });
         trackList.setAdapter(adapter);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.tracklist_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_action_delete:
-                ((TrackingAdapter) trackList.getAdapter()).deleteSelectedItems();
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

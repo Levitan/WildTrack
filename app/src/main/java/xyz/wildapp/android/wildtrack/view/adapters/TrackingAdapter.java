@@ -5,7 +5,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -145,7 +144,7 @@ public class TrackingAdapter extends BaseAdapter {
         @Override
         public void onClick(final View v) {
             PopupMenu popupMenu = new PopupMenu(context, v);
-            popupMenu.inflate(R.menu.tracklist_menu);
+            popupMenu.inflate(R.menu.tracklist_item_menu);
             popupMenu.show();
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
