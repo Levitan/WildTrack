@@ -45,12 +45,7 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     private TextView trackListError;
 
     public TrackingListFragment() {
-    }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
     @Override
