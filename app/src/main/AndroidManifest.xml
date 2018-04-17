@@ -39,6 +39,9 @@
         </service>
 
         <activity android:name=".view.activities.AddTrackActivity" />
+        <activity
+            android:name=".view.activities.TrackStatusActivity"
+            android:theme="@style/TrackStatusTheme" />
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package xyz.wildapp.android.wildtrack.view.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,15 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Iterator;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import xyz.wildapp.android.wildtrack.R;
 import xyz.wildapp.android.wildtrack.api.ApiConstants;
+import xyz.wildapp.android.wildtrack.api.ApiFactory;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
 
 /**
@@ -102,4 +109,28 @@ public class TrackingAdapter extends BaseAdapter {
             ((Tracking)getItem((Integer) buttonView.getTag())).setChecked(isChecked);
         }
     };
+
+    public void deleteSelectedItems() {
+        final View view = ((Activity) context).findViewById(R.id.track_list);
+        for (final Iterator<Tracking> iterator = trackList.iterator(); iterator.hasNext(); ) {
+            Tracking tracking = iterator.next();
+            if (tracking.isChecked()) {
+                ApiFactory.getAfterShipApi().deleteTrack(tracking.getId()).enqueue(new Callback<Tracking>() {
+                    @Override
+                    public void onResponse(Call<Tracking> call, Response<Tracking> response) {
+                        if (response.code() == 200) {
+                            iterator.remove();
+                            notifyDataSetChanged();
+                            Snackbar.make(view, R.string.info_track_list_snack_deleted, Snackbar.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Tracking> call, Throwable t) {
+                        Snackbar.make(view, R.string.error_track_delete, Snackbar.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
+    }
 }

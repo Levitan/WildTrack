@@ -9,6 +9,19 @@
         <item name="android:navigationBarColor">@color/colorPrimary</item>
     </style>
 
+    <style name="TrackStatusTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarStyle">@style/TrackStatusTheme.ActionBar</item>
+    </style>
+
+    <style name="TrackStatusTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/TrackStatusTheme.ActionBar.TitleTextStyle</item>
+        <item name="background">@color/light_background</item>
+    </style>
+
+    <style name="TrackStatusTheme.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

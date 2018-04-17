@@ -34,7 +34,7 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_track);
-        getSupportActionBar().setTitle(getString(R.string.title_add_new_track));
+        getSupportActionBar().setTitle(getString(R.string.activity_title_addnewtrack));
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -70,7 +70,7 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
                 });
                 finish();
             } else {
-                Snackbar.make(view, getString(R.string.error_empty_fields), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, getString(R.string.error_track_add_empty_fields), Snackbar.LENGTH_LONG).show();
             }
         } else if (id == R.id.add_track_number_btn_cancel) {
             finish();
