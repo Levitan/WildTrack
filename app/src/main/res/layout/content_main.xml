@@ -30,14 +30,20 @@
                 android:id="@+id/single_track_field"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/main_track_number_field" />
+                android:hint="@string/field_track_number" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/single_track_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_track_btn"
+            android:text="@string/button_do_track"
             android:theme="@style/ButtonPrimary" />
+
+        <Button
+            android:id="@+id/clickme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="click me" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

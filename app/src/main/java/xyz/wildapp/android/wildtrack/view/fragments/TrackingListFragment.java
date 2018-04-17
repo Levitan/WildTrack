@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,9 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     private FloatingActionButton fab;
     private ListView trackList;
     private LinearLayout waiting;
+    final List<Tracking> tracks = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView trackListError;
 
     public TrackingListFragment() {
     }
@@ -54,10 +60,25 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
         fab = getActivity().findViewById(R.id.fab);
         fab.setVisibility(View.VISIBLE);
         fab.setOnClickListener(this);
-        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.draw_track_list));
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.fragment_title_tracklist));
         waiting = view.findViewById(R.id.track_list_waiting);
+        trackListError = view.findViewById(R.id.track_list_error);
         trackList = view.findViewById(R.id.track_list);
         trackList.setDivider(null);
+
+        swipeRefreshLayout = view.findViewById(R.id.track_list_refresh);
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.google_green,
+                R.color.google_yellow,
+                R.color.google_red,
+                R.color.google_blue);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                paintTrackList();
+            }
+        });
         return view;
     }
 
@@ -84,8 +105,8 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     }
 
     private void paintTrackList() {
-        final List<Tracking> tracks = new ArrayList<>();
-        final TrackingAdapter adapter = new TrackingAdapter(getContext(), tracks);
+        tracks.clear();
+        final TrackingAdapter adapter = new TrackingAdapter(getActivity(), tracks);
         Log.i(TAG, "Fetching list of tracks");
         ApiFactory.getAfterShipApi().getAllTrackings().enqueue(new Callback<List<Tracking>>() {
             @Override
@@ -93,13 +114,20 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
                 Log.i(TAG, "Fetched " + response.body().size() + " tracks");
                 tracks.addAll(response.body());
                 adapter.notifyDataSetChanged();
+                trackListError.setVisibility(View.INVISIBLE);
                 waiting.setVisibility(View.INVISIBLE);
                 trackList.setVisibility(View.VISIBLE);
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onFailure(Call<List<Tracking>> call, Throwable t) {
                 Log.e(TAG, "Error while receiving track list", t);
+                adapter.notifyDataSetChanged();
+                waiting.setVisibility(View.INVISIBLE);
+                trackList.setVisibility(View.INVISIBLE);
+                trackListError.setVisibility(View.VISIBLE);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
         trackList.setAdapter(adapter);
@@ -109,5 +137,16 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.tracklist_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_action_delete:
+                ((TrackingAdapter) trackList.getAdapter()).deleteSelectedItems();
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

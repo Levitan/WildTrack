@@ -1,21 +1,17 @@
 package xyz.wildapp.android.wildtrack;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import xyz.wildapp.android.wildtrack.view.fragments.TrackPackageFragment;
 import xyz.wildapp.android.wildtrack.view.fragments.TrackingListFragment;
@@ -26,9 +22,8 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private FloatingActionButton fab;
 
-    RelativeLayout mainLayout;
-
-    LayoutInflater inflater;
+    private TrackingListFragment trackingListFragment;
+    private TrackPackageFragment trackPackageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +31,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mainLayout = findViewById(R.id.layout_switch);
-        mainLayout.removeAllViews();
 
-        Fragment fragment = new TrackPackageFragment();
+        trackingListFragment = new TrackingListFragment();
+        trackPackageFragment = new TrackPackageFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.layout_switch, fragment).commit();
+        ft.replace(R.id.layout_switch, trackPackageFragment).commit();
 
         fab = findViewById(R.id.fab);
         fab.setVisibility(View.INVISIBLE);
@@ -94,17 +87,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        RelativeLayout content = findViewById(R.id.layout_switch);
+//        content.removeAllViews();
 
         if (id == R.id.nav_track) {
-            mainLayout.removeAllViews();
-            Fragment fragment = new TrackPackageFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.layout_switch, fragment).commit();
+            ft.replace(R.id.layout_switch, trackPackageFragment).commit();
         } else if (id == R.id.nav_track_list) {
-            mainLayout.removeAllViews();
-            Fragment fragment = new TrackingListFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.layout_switch, fragment).commit();
+            ft.replace(R.id.layout_switch, trackingListFragment).commit();
         }
 
 
