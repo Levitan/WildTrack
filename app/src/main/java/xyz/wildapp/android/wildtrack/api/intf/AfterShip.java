@@ -11,7 +11,6 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import xyz.wildapp.android.wildtrack.api.model.Courier;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
-import xyz.wildapp.android.wildtrack.api.model.TrackingRequest;
 
 /**
  * Created by vborisovskii on 4/3/18.
@@ -31,10 +30,10 @@ public interface AfterShip {
     Call<Tracking> getTrack(@Path("trackId") String trackId);
 
     @POST("trackings")
-    Call<Tracking> createTrack(@Body TrackingRequest tracking);
+    Call<Tracking> createTrack(@Body Tracking tracking);
 
     @PUT("trackings/{trackId}")
-    Call<Tracking> updateTrack(@Path("trackId") String trackId, @Body TrackingRequest tracking);
+    Call<Tracking> updateTrack(@Path("trackId") String trackId, @Body Tracking tracking);
 
     @DELETE("trackings/{trackId}")
     Call<Tracking> deleteTrack(@Path("trackId") String trackId);
