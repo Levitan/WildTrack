@@ -64,47 +64,25 @@
                 android:textSize="12sp"
                 android:text="RF531026531SG"
                 app:layout_constraintBottom_toBottomOf="parent" />
+
             <TextView
                 android:id="@+id/tracklist_item_current"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/tracklist_item_current_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal"-->
-            <!--app:layout_constraintRight_toRightOf="parent">-->
-
-            <!--<RelativeLayout-->
-                <!--android:layout_width="55dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--app:layout_constraintRight_toRightOf="parent">-->
-
-                <!--<CheckBox-->
-                    <!--android:id="@+id/tracklist_item_check"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentEnd="true"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:button="@drawable/round_chekbox"-->
-                    <!--android:padding="20dp"-->
-                    <!--android:scaleX="0.65"-->
-                    <!--android:scaleY="0.65" />-->
-            <!--</RelativeLayout>-->
-        <!--</LinearLayout>-->
         <ImageButton
             android:id="@+id/tracklist_item_menu"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_menu"
             android:background="@android:color/transparent"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp" />
     </LinearLayout>
 
 

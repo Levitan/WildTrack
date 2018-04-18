@@ -15,16 +15,16 @@ public class FcmMessagingService extends FirebaseMessagingService {
         if (message.getData().size() > 0) {
             Log.d(TAG, "Message data payload: \n" + message.getData());
         }
-        if(message.getNotification() != null) {
+        if (message.getNotification() != null) {
             Log.d(TAG, "Message notification body: " + message.getNotification().getBody());
         }
     }
 
-    public void scheduleJob(){
+    public void scheduleJob() {
 
     }
 
-    public void handleNow(){
+    public void handleNow() {
 
     }
 }

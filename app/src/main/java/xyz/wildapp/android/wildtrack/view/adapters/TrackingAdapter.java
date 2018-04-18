@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import java.util.Iterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,7 +42,7 @@ public class TrackingAdapter extends BaseAdapter {
     public TrackingAdapter(Context context, List<Tracking> trackList) {
         this.context = context;
         this.trackList = trackList;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class TrackingAdapter extends BaseAdapter {
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
             time.setLayoutParams(params);
 
-            location.setText(tracking.getCheckpoints().get(tracking.getCheckpoints().size() -1).getLocation());
-            String checkpointTime = tracking.getCheckpoints().get(tracking.getCheckpoints().size() -1).getCheckpointTime();
+            location.setText(tracking.getCheckpoints().get(tracking.getCheckpoints().size() - 1).getLocation());
+            String checkpointTime = tracking.getCheckpoints().get(tracking.getCheckpoints().size() - 1).getCheckpointTime();
             SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             try {
                 time.setText(parser.parse(checkpointTime).toString());
@@ -166,7 +166,7 @@ public class TrackingAdapter extends BaseAdapter {
                             ApiFactory.getAfterShipApi().deleteTrack(tracking.getId()).enqueue(new Callback<Tracking>() {
                                 @Override
                                 public void onResponse(Call<Tracking> call, Response<Tracking> response) {
-                                    if(response.code() == 200) {
+                                    if (response.code() == 200) {
                                         Log.i(TAG, "Tracking with id " + tracking.getId() + " was deleted");
                                         Snackbar.make(v, "Tracking " + tracking.getTitle()
                                                 + " was deleted", Snackbar.LENGTH_LONG).show();
