@@ -19,7 +19,6 @@ import xyz.wildapp.android.wildtrack.R;
 import xyz.wildapp.android.wildtrack.api.ApiFactory;
 import xyz.wildapp.android.wildtrack.api.model.Courier;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
-import xyz.wildapp.android.wildtrack.api.model.TrackingRequest;
 import xyz.wildapp.android.wildtrack.view.adapters.CourierAdapter;
 
 public class AddTrackActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,8 +56,7 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
                 tracking.setTitle(trackTitle.getText().toString());
                 tracking.setTrackingNumber(trackNumber.getText().toString());
                 tracking.setSlug(((Courier) trackCouriers.getSelectedItem()).getSlug());
-                ApiFactory.getAfterShipApi().createTrack(
-                        new TrackingRequest(tracking)).enqueue(
+                ApiFactory.getAfterShipApi().createTrack(tracking).enqueue(
                         new Callback<Tracking>() {
                             @Override
                             public void onResponse(Call<Tracking> call, Response<Tracking> response) {
