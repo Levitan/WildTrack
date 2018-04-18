@@ -3,9 +3,10 @@ package xyz.wildapp.android.wildtrack.api.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Courier {
+public class Courier implements Serializable {
 
     @SerializedName("slug")
     @Expose

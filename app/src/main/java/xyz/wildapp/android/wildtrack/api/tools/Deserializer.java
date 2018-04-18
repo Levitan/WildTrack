@@ -21,7 +21,8 @@ public class Deserializer<T> implements JsonDeserializer<T> {
     }
 
     @Override
-    public T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+            throws JsonParseException {
         JsonElement content = json.getAsJsonObject().get("data").getAsJsonObject().get(element);
         return new Gson().fromJson(content, typeOfT);
     }

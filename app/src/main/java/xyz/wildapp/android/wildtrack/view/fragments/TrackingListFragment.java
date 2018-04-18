@@ -8,11 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,11 +21,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import xyz.wildapp.android.wildtrack.AppConstants;
 import xyz.wildapp.android.wildtrack.MainActivity;
 import xyz.wildapp.android.wildtrack.R;
 import xyz.wildapp.android.wildtrack.api.ApiFactory;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
 import xyz.wildapp.android.wildtrack.view.activities.AddTrackActivity;
+import xyz.wildapp.android.wildtrack.view.activities.TrackStatusActivity;
 import xyz.wildapp.android.wildtrack.view.adapters.TrackingAdapter;
 
 /**
@@ -66,6 +66,7 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
         trackListError = view.findViewById(R.id.track_list_error);
         trackList = view.findViewById(R.id.track_list);
         trackList.setDivider(null);
+        trackList.setOnItemClickListener(onItemClickListener);
 
         swipeRefreshLayout = view.findViewById(R.id.track_list_refresh);
         swipeRefreshLayout.setColorSchemeResources(
@@ -133,4 +134,14 @@ public class TrackingListFragment extends Fragment implements View.OnClickListen
         });
         trackList.setAdapter(adapter);
     }
+
+    AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            Tracking tracking = (Tracking) adapterView.getItemAtPosition(position);
+            Intent intent = new Intent(getContext(), TrackStatusActivity.class);
+            intent.putExtra(AppConstants.INTENT_TRACKING, tracking);
+            startActivity(intent);
+        }
+    };
 }

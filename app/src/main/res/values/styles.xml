@@ -11,17 +11,27 @@
 
     <style name="TrackStatusTheme" parent="@style/Theme.AppCompat.Light">
         <item name="actionBarStyle">@style/TrackStatusTheme.ActionBar</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimary">@color/light_background</item>-->
         <item name="colorPrimaryDark">@color/light_background</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionOverflowButtonStyle">@style/TrackStatusTheme.ActionBar.MenuIcon</item>
     </style>
 
-    <style name="TrackStatusTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+    <style name="TrackStatusTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="titleTextStyle">@style/TrackStatusTheme.ActionBar.TitleTextStyle</item>
         <item name="background">@color/light_background</item>
     </style>
 
     <style name="TrackStatusTheme.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TrackStatusTheme.ActionBar.MenuIcon" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_menu</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

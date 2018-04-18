@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="xyz.wildapp.android.wildtrack.view.activities.TrackStatusActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp"
+        android:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/status_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/colorPrimary"
+            android:elevation="0dp" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="?attr/actionBarSize">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:background="@color/light_background"
             android:elevation="5dp"
             android:orientation="vertical">
@@ -26,39 +45,71 @@
                 android:background="@drawable/action_bar_separator" />
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:layout_weight="1"
-                    android:gravity="end"
-                    android:paddingEnd="5dp"
-                    android:paddingStart="5dp"
-                    android:text="@string/delivery_status"
-                    android:textSize="16sp" />
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Delivery status"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/delivery_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:text="On courier"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:layout_weight="1"
-                    android:gravity="start"
-                    android:paddingEnd="5dp"
-                    android:paddingStart="5dp"
-                    android:text="In progress"
-                    android:textAllCaps="true"
-                    android:textColor="@color/google_green"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Track number"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/track_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:text="LQ301800337CN"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 
         <ListView
             android:id="@+id/track_status_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"
+            android:listSelector="@android:color/transparent" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

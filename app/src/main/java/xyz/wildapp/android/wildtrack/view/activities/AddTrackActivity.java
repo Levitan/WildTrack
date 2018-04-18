@@ -57,26 +57,21 @@ public class AddTrackActivity extends AppCompatActivity implements View.OnClickL
                 tracking.setTitle(trackTitle.getText().toString());
                 tracking.setTrackingNumber(trackNumber.getText().toString());
                 tracking.setSlug(((Courier) trackCouriers.getSelectedItem()).getSlug());
-                ApiFactory.getAfterShipApi().createTrack(new TrackingRequest(tracking)).enqueue(new Callback<Tracking>() {
-                    @Override
-                    public void onResponse(Call<Tracking> call, Response<Tracking> response) {
-                        Log.i(TAG, "Create tracking status code: " + response.code());
-                        Log.d(TAG, "onResponse: " + response.body());
-                        synchronized (this) {
-                            try {
-                                this.wait(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                ApiFactory.getAfterShipApi().createTrack(
+                        new TrackingRequest(tracking)).enqueue(
+                        new Callback<Tracking>() {
+                            @Override
+                            public void onResponse(Call<Tracking> call, Response<Tracking> response) {
+                                Log.i(TAG, "Create tracking status code: " + response.code());
+                                Log.d(TAG, "onResponse: " + response.body());
+                                finish();
                             }
-                        }
-                        finish();
-                    }
 
-                    @Override
-                    public void onFailure(Call<Tracking> call, Throwable t) {
-                        Log.e(TAG, "Unable to create tracking", t);
-                    }
-                });
+                            @Override
+                            public void onFailure(Call<Tracking> call, Throwable t) {
+                                Log.e(TAG, "Unable to create tracking", t);
+                            }
+                        });
             } else {
                 Snackbar.make(view, getString(R.string.error_track_add_empty_fields), Snackbar.LENGTH_LONG).show();
             }
