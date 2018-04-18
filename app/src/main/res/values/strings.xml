@@ -1,8 +1,41 @@
 <resources>
+    <!-- Activities -->
     <string name="app_name">Wild Track</string>
+    <string name="activity_title_trackstatus">Track status</string>
+    <string name="activity_title_addnewtrack">Add new track</string>
+    <string name="fragment_title_tracklist">Track list</string>
 
+    <!-- Drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="draw_title_group_tracking">Tracking</string>
+    <string name="draw_tracking_track">Track package</string>
+    <string name="draw_tracking_list">Track list</string>
+
+    <!-- Menu -->
+    <string name="menu_action_settings">Settings</string>
+    <string name="menu_action_delete">Delete</string>
+
+    <!-- Fields -->
+    <string name="field_track_number">Track number</string>
+    <string name="field_track_title">Track title</string>
+    <string name="filed_track_courier">Courier</string>
+
+    <!-- Buttons -->
+    <string name="button_do_track">Track package</string>
+    <string name="button_track_add">Add track number</string>
+    <string name="button_cancel">Cancel</string>
+
+    <!-- Messages -->
+
+    <string name="error_track_add_empty_fields">All fields must not be empty</string>
+    <string name="error_track_delete">Error while deleting items</string>
+    <string name="error_track_list_fetch">Could not receive data</string>
+
+    <string name="info_track_list_snack_deleted">Selected items was deleted</string>
+
+    <!-- Other -->
+    <string name="delivery_status">Delivery status:</string>
+    <string name="loading_data">Loading data</string>
 </resources>

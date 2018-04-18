@@ -3,9 +3,10 @@ package xyz.wildapp.android.wildtrack.api.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Checkpoint {
+public class Checkpoint implements Serializable {
 
     @SerializedName("slug")
     @Expose
@@ -68,7 +69,9 @@ public class Checkpoint {
      * @param slug
      * @param coordinates
      */
-    public Checkpoint(String slug, String city, String createdAt, String location, String countryName, String message, String countryIso3, String tag, String subtag, String checkpointTime, List<Object> coordinates, Object state, String zip) {
+    public Checkpoint(String slug, String city, String createdAt, String location, String countryName,
+                      String message, String countryIso3, String tag, String subtag, String checkpointTime,
+                      List<Object> coordinates, Object state, String zip) {
         super();
         this.slug = slug;
         this.city = city;
