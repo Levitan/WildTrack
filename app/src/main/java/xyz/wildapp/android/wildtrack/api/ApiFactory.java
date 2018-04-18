@@ -16,6 +16,7 @@ import xyz.wildapp.android.wildtrack.api.intf.AfterShip;
 import xyz.wildapp.android.wildtrack.api.model.Courier;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
 import xyz.wildapp.android.wildtrack.api.tools.Deserializer;
+import xyz.wildapp.android.wildtrack.api.tools.Serializer;
 
 /**
  * Created by vborisovskii on 4/3/18.
@@ -48,6 +49,7 @@ public class ApiFactory {
                 .registerTypeAdapter(couriersClazz, new Deserializer<List<Courier>>("couriers"))
                 .registerTypeAdapter(trackingsClazz, new Deserializer<List<Tracking>>("trackings"))
                 .registerTypeAdapter(Tracking.class, new Deserializer<Tracking>("tracking"))
+                .registerTypeAdapter(Tracking.class, new Serializer<Tracking>())
                 .create();
     }
 
