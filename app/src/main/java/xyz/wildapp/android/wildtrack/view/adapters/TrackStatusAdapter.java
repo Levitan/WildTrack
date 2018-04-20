@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import xyz.wildapp.android.wildtrack.R;
+import xyz.wildapp.android.wildtrack.api.ApiConstants;
 import xyz.wildapp.android.wildtrack.api.model.Tracking;
 
 /**
@@ -58,20 +59,36 @@ public class TrackStatusAdapter extends BaseAdapter {
         TextView time = view.findViewById(R.id.track_status_item_time);
         try {
             date.setText(new SimpleDateFormat("MM/dd/yyyy").format(parser.parse(track.getCheckpoints().get(position).getCheckpointTime())));
-            time.setText(new SimpleDateFormat("HH:mm").format(parser.parse(track.getCheckpoints().get(position).getCheckpointTime())));
+            time.setText(position + " " + new SimpleDateFormat("HH:mm").format(parser.parse(track.getCheckpoints().get(position).getCheckpointTime())));
         } catch (ParseException e) {
             Log.e(TAG, "Unable to parse date", e);
         }
 
+        TextView trackLineTop = view.findViewById(R.id.track_line_top);
+        TextView trackLineBottom = view.findViewById(R.id.track_line_bottom);
+        ImageView trackLineNext = view.findViewById(R.id.track_line_next);
+        ImageView trackPointer = view.findViewById(R.id.track_pointer);
+
         TextView message = view.findViewById(R.id.track_status_item_message);
         message.setText(track.getCheckpoints().get(position).getMessage());
         if (position == 0) {
-            view.findViewById(R.id.track_line_top).setVisibility(View.INVISIBLE);
-            ((ImageView) view.findViewById(R.id.track_pointer)).setImageDrawable(context.getDrawable(R.drawable.track_status_current));
+            if (track.getTag().equalsIgnoreCase(ApiConstants.DELIVERY_STATUS.get(ApiConstants.STATUS_DELIVERED))) {
+                trackPointer.setImageDrawable(context.getDrawable(R.drawable.track_status_complete));
+            } else {
+                trackPointer.setImageDrawable(context.getDrawable(R.drawable.track_status_current));
+            }
+            trackLineTop.setVisibility(View.INVISIBLE);
+            trackLineNext.setVisibility(View.VISIBLE);
+            trackLineBottom.setVisibility(View.VISIBLE);
+        } else {
+            trackPointer.setImageDrawable(context.getDrawable(R.drawable.track_status_previous));
+            trackLineTop.setVisibility(View.VISIBLE);
+            trackLineNext.setVisibility(View.VISIBLE);
+            trackLineBottom.setVisibility(View.VISIBLE);
         }
         if (position == getCount() - 1) {
-            view.findViewById(R.id.track_line_bottom).setVisibility(View.INVISIBLE);
-            view.findViewById(R.id.track_line_next).setVisibility(View.INVISIBLE);
+            trackLineBottom.setVisibility(View.INVISIBLE);
+            trackLineNext.setVisibility(View.INVISIBLE);
         }
         return view;
     }
